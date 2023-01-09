@@ -12,19 +12,24 @@ Potential features in future state:
 
 
 v0
-- Webpage allows user to upload an mp3
-- User uses sliders to chop up the mp3 into ‘chunks’
+- Webpage allows user to upload an mp3 via form
+  - form collects
+    - basic info on the song
+    - the # of chunks to split the song into
+    - the seconds mark indicating the end of each chunk
+- form
 - User can then play these chunks back by clicking
+- Building out Chunk objects
+  - Allow user to enter information about the chunk
+    - Title
+    - Notes
 
 v1
 - Addition of playback features
-- Loop
-- Speed manipulation
-- Building out Chunk objects
-- Allow user to enter information about the chunk
-- Title
-- Notes
+  - Loop
+  - Speed manipulation
 - Organize chunks into kanban board
+- User uses sliders to chop up the mp3 into ‘chunks’
 
 v3
 - User can record a live take of this chunk to and save it on the chunk object
