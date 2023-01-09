@@ -6,7 +6,7 @@ const root = createRoot(document.getElementById("root"));
 const App = () => {
   return (
     <div>
-      <h1>Freequency App</h1>
+      <h1 id="title">Freequency App</h1>
       < Upload />
     </div>
   )
