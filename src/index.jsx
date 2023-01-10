@@ -18,6 +18,8 @@ const App = () => {
   /* ======== ======== ======== EFFECTS ======== ======== ======== */
   useEffect(() => {
     if (songChunks !== 'init') {
+      document.getElementById(view).classList.toggle("active")
+      document.getElementById('practice').classList.toggle("active")
       setView('practice')
     }
   }, [songChunks])
@@ -27,6 +29,8 @@ const App = () => {
     setSongChunks(chunkData)
   }
   let navHandler = (clicked) => {
+    document.getElementById(view).classList.toggle("active")
+    document.getElementById(clicked).classList.toggle("active")
     setView(clicked)
   }
 
@@ -48,7 +52,7 @@ const App = () => {
       </div>
     )
   } else if (view === 'practice') {
-    if (typeof songChunks !== 'array') { // if user goes to practice without selecting a song, generate song list
+    if (songChunks === 'init') { // if user goes to practice without selecting a song, generate song list
       return(
         <div>
           < Navbar navHandler={navHandler} view={view}/>
@@ -61,7 +65,6 @@ const App = () => {
           <div>
             < Navbar navHandler={navHandler} view={view}/>
             < Practice songChunks={songChunks}/>
-
           </div>
         )
      }

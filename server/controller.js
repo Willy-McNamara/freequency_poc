@@ -9,7 +9,7 @@ const chunker = (req, res) => {
     console.log('logging chunk in controller', chunk)
     MP3Cutter.cut({
       src: './uploads/' + chunk.chunkParent,
-      target: `./uploads/chunks/${chunk.chunkName.replace(/\s/g, '')}.mp3`,
+      target: `./uploads/chunks/${chunk.chunkParent + chunk.chunkName.replace(/\s/g, '')}.mp3`,
       start: Number(chunk.chunkStart),
       end: Number(chunk.chunkEnd)
     });
@@ -17,7 +17,7 @@ const chunker = (req, res) => {
       chunkParent: chunk.chunkParent,
       chunkName: chunk.chunkName,
       chunkNotes: chunk.chunkNotes,
-      chunkPath: `./uploads/chunks/${chunk.chunkName.replace(/\s/g, '')}.mp3`,
+      chunkPath: `${chunk.chunkParent + chunk.chunkName.replace(/\s/g, '')}.mp3`,
       chunkStart: Number(chunk.chunkStart),
       chunkEnd: Number(chunk.chunkEnd)
     }).save()

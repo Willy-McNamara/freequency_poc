@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname)
   },
   destination: function (req, file, cb) {
-    cb(null, '../public')
+    cb(null, './uploads/')
   },
 })
 const upload = multer({ storage })
@@ -54,8 +54,7 @@ app.get('/songs', (req, res) => {
 
 
 app.get('/chunk/:chunkName', (req, res) => {
-  console.log('request recieved for chunk, here is body.params', req.params)
-  res.sendFile(__dirname + '/uploads/DonnaLee.mp3')
+  res.sendFile(__dirname + `/uploads/chunks/${req.params.chunkName}`)
 })
 
 /* ======== ======== ======== SET TO LISTEN ======== ======== ======== */

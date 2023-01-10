@@ -16,7 +16,7 @@ const SongList = ({songChunks}) => {
     if (list === 'init') {
       axios.get('http://localhost:3055/songs')
       .then((res) => {
-        console.log('res.data from server for songs request', res.data)
+        // console.log('res.data from server for songs request', res.data)
         let keyIndex = -1;
         let songs = res.data.map((song, index) => {
           return (< Song song={song} key={keyIndex++}/>)
@@ -30,7 +30,7 @@ const SongList = ({songChunks}) => {
       // add the newest song
       axios.get('http://localhost:3055/songs')
       .then((res) => {
-        console.log('res.data from server for songs request', res.data)
+        // console.log('res.data from server for songs request', res.data)
         let newSong = res.data[list.lenght]
         setList([...list, < Song song={newSong} key={list.length}/>])
       })
@@ -40,7 +40,7 @@ const SongList = ({songChunks}) => {
     }
   }, [])
 
-  console.log('logging list in SongList.jsx', list)
+  // console.log('logging list in SongList.jsx', list)
   return (
     <div>
       SongList here

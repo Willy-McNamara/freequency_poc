@@ -34,6 +34,7 @@ const Upload = ({chunkCompletionHandler}) => {
     })
     .then((res) => {
       console.log('response from server on upload/inf post, here is res', res.data)
+      chunkCompletionHandler(res.data)
     })
     .catch((err) => {
       console.log('error on upload, here is err: ', err)

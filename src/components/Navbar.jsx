@@ -4,10 +4,6 @@ const Navbar = ({navHandler, view}) => {
 
   let clickHandler = (e) => {
     e.preventDefault()
-    // untoggle the active class from current view element, and toggle it on target
-    document.getElementById(view).classList.toggle("active")
-    document.getElementById(e.target.id).classList.toggle("active")
-    // call handler to set the new view
     navHandler(e.target.id)
   }
   return (
