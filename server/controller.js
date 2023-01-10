@@ -1,5 +1,5 @@
 const MP3Cutter = require('mp3-cutter');
-const Chunk = require('./model/Chunk');
+const Models = require('./model/Model');
 
 const chunker = (req, res) => {
   let chunks = req.body
@@ -13,7 +13,7 @@ const chunker = (req, res) => {
       start: Number(chunk.chunkStart),
       end: Number(chunk.chunkEnd)
     });
-    return new Chunk({
+    return new Models.Chunk({
       chunkParent: chunk.chunkParent,
       chunkName: chunk.chunkName,
       chunkNotes: chunk.chunkNotes,
@@ -28,9 +28,16 @@ const chunker = (req, res) => {
   })
   Promise.all(dbEntries)
   .then((dbEntries) => {
-    // here are the db entries which should be an array of objects, can send these back to the client I believe!
-    console.log('logging dbEntries in Promise.all() controller', dbEntries)
-    res.send(dbEntries)
+    // save the song name and date
+     return [dbEntries, new Models.Song({
+      songName: chunks[0].chunkParent,
+      dateAdded: new Date().toString()
+    }).save()]
+  })
+  .then((arr) => {
+    // send the new entries back to the client as array of obj
+    console.log('res from db adding song name', arr[1])
+    res.send(arr[0])
   })
   .catch((err) => {
     console.log('error in promise chain in controller, here is err', err)

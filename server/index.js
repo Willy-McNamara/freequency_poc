@@ -3,7 +3,8 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const db = require('./model/index.js');
-const chunker = require('./controller.js')
+const chunker = require('./controller.js');
+const Models = require('./model/Model');
 
 /* ======== ======== ======== MULTER ======== ======== ======== */
 /* a special middleware for recieving multipart form-data (in this case, our mp3s!) */
@@ -38,6 +39,19 @@ app.post('/upload/chunkInfo', (req, res) => {
   // send to a controller which will chop up and save new mini mp3s, and add info to db
   chunker(req, res)
 })
+
+// route for grabbing all the song names in the system
+app.get('/songs', (req, res) => {
+  Models.Song.find()
+  .then((songInfo) => {
+    res.send(songInfo)
+  })
+  .catch((err) => {
+    console.log('error getting song info from database, here is err: ', err)
+    res.send(err)
+  })
+})
+
 
 app.get('/chunk/:chunkName', (req, res) => {
   console.log('request recieved for chunk, here is body.params', req.params)
