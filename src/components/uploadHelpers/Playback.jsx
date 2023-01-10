@@ -14,19 +14,14 @@ const Playback = ({mp3, submitChunks}) => {
     <div className="Container" >
       <h3> You've selected {mp3.name}</h3>
       <h5> Use the player to determine the time stamps of your chunks! </h5>
-
+      <audio
+        controls
+        src={URL.createObjectURL(mp3)} type="audio/mpeg">
+     </audio>
      <div>
       ChunkForm
-      < ChunkForm submitChunks={submitChunks}/>
+      < ChunkForm submitChunks={submitChunks} mp3name={mp3.name}/>
      </div>
-     <label>
-          Title:
-          <input type="text" ref={titleRef} />
-      </label>
-      <label>
-          Title:
-          <input type="text" ref={titleRef} />
-      </label>
     </div>
   )
 }

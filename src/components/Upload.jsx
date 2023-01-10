@@ -1,13 +1,14 @@
 import React from 'react'
 import {useState,useEffect,useRef} from 'react'
 import axios from 'axios'
-import Playback from './Playback.jsx'
+import Playback from './uploadHelpers/Playback.jsx'
+
 /*
 Plan:
 */
 
-const Upload = () => {
-  let [mp3, setMP3] = useState(true) // setting to true for dev to skip mp3 submit
+const Upload = ({chunkCompletionHandler}) => {
+  let [mp3, setMP3] = useState(false) // setting to true for dev to skip mp3 submit
 
 
   let handleChange = (event) => {
@@ -22,8 +23,26 @@ const Upload = () => {
   }
 
   let submitChunks = (chunkData) => {
-    // takes array of chunkData
+    // send chunkData and mp3 to the server for processing
     console.log('logging chunkData in submitChunks handler', chunkData)
+    console.log('file to be appended', mp3)
+
+    var formData = new FormData();
+    mp3.description = JSON.stringify(chunkData)
+    formData.append("mp3", mp3, mp3.name);
+    mp3.description = JSON.stringify(chunkData)
+    axios.post('http://localhost:3055/upload/mp3', formData, {headers: {'Content-Type': 'multipart/form-data'}})
+    .then((res) => {
+      console.log('response from server on upload/mp3 post, here is res', res.data)
+      axios.post('http://localhost:3055/upload/chunkInfo', chunkData)
+    })
+    .then((res) => {
+      console.log('response from server on upload/inf post, here is res', res.data)
+    })
+    .catch((err) => {
+      console.log('error on upload, here is err: ', err)
+    })
+    // cut up mp3 into appropriate chunks
   }
 
   if (!mp3) {
@@ -38,6 +57,7 @@ const Upload = () => {
     return (
       <div>
         < Playback mp3={mp3} submitChunks={submitChunks}/>
+        <button></button>
       </div>
     )
   }
@@ -79,4 +99,9 @@ export default Upload
         <input id="new.mp3" className="center" type="file" name="mp3" accept=".mp3" onChange={handleChange}/>
         <input type="submit" value="Submit" />
       </form>
-  */
+
+  const blob = new Blob([res.data], {type: 'audio/mpeg'})
+      console.log('logging blob: ', blob)
+      chunkCompletionHandler(mp3)
+
+      */

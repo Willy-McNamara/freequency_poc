@@ -6,10 +6,11 @@ import FormData from './FormData.jsx'
 Plan:
 */
 
-const ChunkForm = ({submitChunks}) => {
+const ChunkForm = ({submitChunks, mp3name}) => {
   // need to put this handler first so I can reference it when creating state
   let createChunkObj = (chunkData) => {
     // adds the form data to a growing array of chunk objects
+    chunkData.chunkParent = mp3name
     setChunkObjs([...chunkObjs, chunkData])
   }
 
