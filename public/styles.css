@@ -1,8 +1,12 @@
 #root {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: #fffcf5;
+  font-family: 'Lexend', sans-serif;
 }
 
 .Container {
@@ -10,6 +14,24 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  align-items: center;
+}
+
+.audioPlayer {
+  width: 40vw;
+  height: 10vh;
+}
+
+.HorizontalContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  align-items: space-between;
+}
+
+.textInput {
+  width: 25vw;
 }
 
 .center {
@@ -23,16 +45,56 @@
   margin: 1vw 1vw;
 }
 
+#logo {
+  width: 20vw;
+  height: auto;
+  position: fixed;
+  top: 1vh;
+  left: 1vw;
+}
+
+h6, h4, h1 {
+  margin-block-start: 0;
+}
+
+.formElement {
+  align-self: flex-start;
+}
+
+#songGallery {
+  /* border: solid 3px #eb89b5; */
+  border-radius: 3px;
+}
+
+.song {
+  align-content: center;
+}
+
+.songName {
+  text-align: center;
+  color: #eb89e6;
+}
+
+.songName:hover {
+  color: #eb8e89;
+}
+
 /* NAVBAR */
 
 /* Add a black background color to the top navigation */
-.topnav {
+.nav {
   background-color: #333;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 40%;
+  left: 1vw;
+  border-radius: 3px;
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.nav a {
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -42,13 +104,24 @@
 }
 
 /* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
+.nav a:hover {
+  background-color: #eb89e6;
   color: black;
 }
 
 /* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #04AA6D;
+.nav a.active {
+  background-color: #eb8e89;
   color: white;
 }
+
+/*
+pinkest pink: eb89e6
+middle pink: eb89b5
+orangey pink: eb8e89
+
+F26322
+
+link for icon8
+<a target="_blank" href="https://icons8.com/icon/yfT8zPn8iKy4/music-library">Music Library</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+*/

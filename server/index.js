@@ -3,7 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const db = require('./model/index.js');
-const chunker = require('./controller.js');
+const controller = require('./controller.js');
 const Models = require('./model/Model');
 
 /* ======== ======== ======== MULTER ======== ======== ======== */
@@ -29,30 +29,27 @@ app.use(express.static(path.join('../public')));
 
 /* ======== ======== ======== ROUTES ======== ======== ======== */
 
-// post route which captures mp3's sent over from the client
+// POST MP3
 app.post('/upload/mp3', upload.single('mp3'), (req, res) => {
   res.send('file recieved')
 })
-
+// POST CHUNK INFO
 app.post('/upload/chunkInfo', (req, res) => {
   console.log('here is req.body:', req.body)
   // send to a controller which will chop up and save new mini mp3s, and add info to db
-  chunker(req, res)
+  controller.chunker(req, res)
 })
 
-// route for grabbing all the song names in the system
+// GET ALL SONGS
 app.get('/songs', (req, res) => {
-  Models.Song.find()
-  .then((songInfo) => {
-    res.send(songInfo)
-  })
-  .catch((err) => {
-    console.log('error getting song info from database, here is err: ', err)
-    res.send(err)
-  })
+  controller.songsRetriever(req, res)
 })
-
-
+// GET CHUNKS FROM SPECIFIC SONG
+app.get('/chunks/:songName', (req, res) => {
+  console.log('logging req.params in get chunks', req.params)
+  controller.chunkRetriever(req, res)
+})
+// GET MP3 FOR SPECIFIC CHUNK
 app.get('/chunk/:chunkName', (req, res) => {
   res.sendFile(__dirname + `/uploads/chunks/${req.params.chunkName}`)
 })

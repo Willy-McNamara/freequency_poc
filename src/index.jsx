@@ -1,6 +1,7 @@
 import React from "react";
 import {useState,useEffect} from "react";
 import { createRoot } from "react-dom/client";
+import axios from "axios";
 import Upload from './components/Upload.jsx';
 import Practice from './components/Practice.jsx';
 import Navbar from './components/Navbar.jsx'
@@ -25,8 +26,16 @@ const App = () => {
   }, [songChunks])
 
   /* ======== ======== ======== HANDLERS ======== ======== ======== */
-  let chunkCompletionHandler = (chunkData) => {
-    setSongChunks(chunkData)
+  let getChunksBySongName = (songName) => { // chunkCompletionHandler
+    console.log('logging songName in getChunksBySongName', songName)
+    axios.get(`http://localhost:3055/chunks/${songName}`)
+    .then((res) => {
+      console.log('res from server in Song.jsx', res.data)
+      setSongChunks(res.data)
+    })
+    .catch((err) => {
+      console.log('err in get request Song.jsx', err)
+    })
   }
   let navHandler = (clicked) => {
     document.getElementById(view).classList.toggle("active")
@@ -37,27 +46,29 @@ const App = () => {
   /* ======== ======== ======== COMPONENTS TO RENDER ======== ======== ======== */
   if (view === 'home') {
     return(
-      <div>
+      <div className="Container">
         < Navbar navHandler={navHandler} view={view}/>
-        <h1> HOME PAGE </h1>
-        < SongList />
+        < h1 > Welcome! </h1>
+        <h4> This is an app designed to help with learning music by ear. </h4>
+        <h6> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h6>
+        < SongList getChunksBySongName={getChunksBySongName}/>
       </div>
     )
   } else if (view === 'addSong') {
     return (
       <div>
         < Navbar navHandler={navHandler} view={view}/>
-        <h1 id="title">Freequency App</h1>
-        < Upload chunkCompletionHandler={chunkCompletionHandler}/>
+        <h2 id="title">Upload an .mp3 and git' to chunkin'</h2>
+        < Upload getChunksBySongName={getChunksBySongName}/>
       </div>
     )
   } else if (view === 'practice') {
     if (songChunks === 'init') { // if user goes to practice without selecting a song, generate song list
       return(
-        <div>
+        <div className="Container">
           < Navbar navHandler={navHandler} view={view}/>
-          No song selected! Head back home and select a song
-          < SongList />
+          <h4 className="center">Select a song to git goin'!</h4>
+          < SongList getChunksBySongName={getChunksBySongName}/>
         </div>
       )
     } else {

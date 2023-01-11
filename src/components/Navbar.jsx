@@ -7,7 +7,7 @@ const Navbar = ({navHandler, view}) => {
     navHandler(e.target.id)
   }
   return (
-    <div className="topnav">
+    <div className="nav">
       <a id="home" className="active" onClick={clickHandler}>Home</a>
       <a id="addSong" onClick={clickHandler}>Add Song</a>
       <a id="practice" onClick={clickHandler}>Practice</a>

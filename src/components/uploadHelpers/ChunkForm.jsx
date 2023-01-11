@@ -12,14 +12,12 @@ const ChunkForm = ({submitChunks, mp3name}) => {
     // adds the form data to a growing array of chunk objects
     chunkData.chunkParent = mp3name
     setChunkObjs([...chunkObjs, chunkData])
+    setChunks([...chunks, < FormData createChunkObj={createChunkObj} removeChunk={removeChunk} key={chunks.length + 1}/>])
+    setChunkIndex(chunkIndex + 1)
   }
-
-  let [chunks, setChunks] = useState([< FormData createChunkObj={createChunkObj} key={1}/>])
+  let [chunks, setChunks] = useState([< FormData createChunkObj={createChunkObj}removeChunk={removeChunk} key={1}/>])
   let [chunkObjs, setChunkObjs] = useState([])
-
-  let addChunk = () => {
-    setChunks([...chunks, < FormData createChunkObj={createChunkObj} key={chunks.length + 1}/>])
-  }
+  let [chunkIndex, setChunkIndex] =useState(0)
 
   let removeChunk = () => {
     // set a limit
@@ -34,13 +32,11 @@ const ChunkForm = ({submitChunks, mp3name}) => {
     console.log('handle submit triggered')
     submitChunks(chunkObjs)
   }
-
+  console.log('chunkForm rerender, here is chunks:', chunks, 'chunkObjs:', chunkObjs, 'and chunkIndex:', chunkIndex)
   return (
     <div className="Container" >
-      {chunks}
-      <button type="button" onClick={addChunk}>Add a new chunk</button>
-      <button type="button" onClick={removeChunk}>Remove most recent chunk</button>
-      <button type="button" onClick={handleSubmitChunks}> Done Chunkin' </button>
+      {chunks[chunkIndex]}
+      <button type="button" onClick={handleSubmitChunks}> done chunkin' </button>
     </div>
   )
 }

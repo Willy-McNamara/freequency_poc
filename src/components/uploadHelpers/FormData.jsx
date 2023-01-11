@@ -5,7 +5,7 @@ import {useState,useEffect,useRef} from 'react'
 Plan:
 */
 
-const FormData = ({createChunkObj}) => {
+const FormData = ({createChunkObj, removeChunk}) => {
   let chunkName = useRef('')
   let chunkNotes = useRef('')
   let chunkStart = useRef(0)
@@ -25,23 +25,24 @@ const FormData = ({createChunkObj}) => {
 
   return (
     <div className="Container" >
-      <label>
-          Name this chunk:
-          <input type="text" ref={chunkName} />
+      <label className="formElement">
+          {"Name this here chunk:  "}
+          <input className="textInput" type="text" ref={chunkName} />
       </label>
-      <label>
-          Add any notes you'd like about this chunk:
-          <input type="text" ref={chunkNotes} />
+      <label className="formElement">
+          {"Describe this here chunk:  "}
+          <input className="textInput" type="text" ref={chunkNotes} />
       </label>
-      <label>
-          Starting time (in seconds):
-          <input type="text" ref={chunkStart} />
+      <label className="formElement">
+          {"Starting time (in seconds):  "}
+          <input className="textInput" type="text" ref={chunkStart} />
       </label>
-      <label>
-          Ending time (in seconds):
-          <input type="text" ref={chunkEnd} />
+      <label className="formElement">
+          {"Ending time (in seconds):  "}
+          <input className="textInput" type="text" ref={chunkEnd} />
       </label>
-      <button type="button" onClick={handleSubmit}>Submit this chunk</button>
+      <button type="button" onClick={handleSubmit}> submit this chunk </button>
+      <button type="button" onClick={removeChunk}> undo chunk submit </button>
     </div>
   )
 }

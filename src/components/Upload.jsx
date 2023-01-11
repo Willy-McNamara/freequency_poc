@@ -7,7 +7,7 @@ import Playback from './uploadHelpers/Playback.jsx'
 Plan:
 */
 
-const Upload = ({chunkCompletionHandler}) => {
+const Upload = ({getChunksBySongName}) => {
   let [mp3, setMP3] = useState(false) // setting to true for dev to skip mp3 submit
 
 
@@ -33,8 +33,7 @@ const Upload = ({chunkCompletionHandler}) => {
       return axios.post('http://localhost:3055/upload/chunkInfo', chunkData)
     })
     .then((res) => {
-      console.log('response from server on upload/inf post, here is res', res.data)
-      chunkCompletionHandler(res.data)
+      getChunksBySongName(mp3.name)
     })
     .catch((err) => {
       console.log('error on upload, here is err: ', err)
@@ -44,16 +43,15 @@ const Upload = ({chunkCompletionHandler}) => {
   if (!mp3) {
     return(
       <div id="uploadContainer" className="Container" >
-        <label htmlFor="upload" className="center">Upload your .mp3 here!</label>
+        <label htmlFor="upload" className="center"></label>
         <input id="new.mp3" className="center" type="file" name="mp3" accept=".mp3" onChange={handleChange}/>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="chunk time" />
       </div>
     )
   } else {
     return (
       <div>
         < Playback mp3={mp3} submitChunks={submitChunks}/>
-        <button></button>
       </div>
     )
   }

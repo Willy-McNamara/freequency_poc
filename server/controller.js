@@ -45,7 +45,30 @@ const chunker = (req, res) => {
   })
 }
 
-module.exports = chunker
+const chunkRetriever = (req, res) => {
+  // use songName in req.params to retrieve all chunks from database matching that chunkParent
+  Models.Chunk.find({chunkParent: req.params.songName})
+  .then((dbRes) => {
+    res.send(dbRes)
+  })
+  .catch((err) => {
+    console.log('error in chunkRetriever, controller.js', err)
+    res.send(err)
+  })
+}
+
+const songsRetriever = (req, res) => {
+  Models.Song.find()
+  .then((songInfo) => {
+    res.send(songInfo)
+  })
+  .catch((err) => {
+    console.log('error getting song info from database, here is err: ', err)
+    res.send(err)
+  })
+}
+
+module.exports = {chunker, chunkRetriever, songsRetriever}
 
 /*
 .then((dbRes) => {

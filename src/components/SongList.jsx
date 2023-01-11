@@ -8,7 +8,7 @@ import Song from "./Song.jsx"
 This component will show the songs available to a user!
 */
 
-const SongList = ({songChunks}) => {
+const SongList = ({songChunks, getChunksBySongName}) => {
   let [list, setList] = useState('init')
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const SongList = ({songChunks}) => {
         // console.log('res.data from server for songs request', res.data)
         let keyIndex = -1;
         let songs = res.data.map((song, index) => {
-          return (< Song song={song} key={keyIndex++}/>)
+          return (< Song song={song} key={keyIndex++} getChunksBySongName={getChunksBySongName}/>)
         })
         setList(songs)
       })
@@ -41,12 +41,20 @@ const SongList = ({songChunks}) => {
   }, [])
 
   // console.log('logging list in SongList.jsx', list)
-  return (
-    <div>
-      SongList here
-      {list}
-    </div>
-  )
+  if (list === "init") {
+    return (
+      <div>
+        No songs added yet!
+      </div>
+    )
+  } else {
+    return (
+      <div className="Container" id="songGallery">
+        <img src="galleryv3.png"></img>
+        {list}
+      </div>
+    )
+  }
 }
 
 
