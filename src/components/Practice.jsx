@@ -70,7 +70,7 @@ const Practice = ({songChunks}) => {
           <button onClick={submitSessionHandler}> submit session </button>
       </div>
       <div className="Container chunksContainer">
-          <h3>Other Chunks</h3>
+          <h4 id="otherChunks">Your other chunks from {songChunks[0].chunkParent}</h4>
           <div className="HorizontalContainer">
           {chunkThumbnails}
           </div>

@@ -64,7 +64,9 @@ const PracticeLog = ({songName, updatePracticeLog}) => {
           <div className="accordianContent">
             {practiceLog.totalPracticeTime} minutes practiced across {practiceLog.log.length} sessions!
           </div>
-          {entries}
+          <div className="scrollableDiv">
+            {entries}
+          </div>
         </div>}
       </div>
     )

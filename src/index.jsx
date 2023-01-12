@@ -50,8 +50,8 @@ const App = () => {
           < Navbar navHandler={navHandler} view={view}/>
           <div className="Container welcomeContainer">
           < h1 > Welcome! </h1>
-          <h4> This is an app designed to help with learning music by ear. </h4>
-          <h5> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h5>
+          <h4 className="welcome"> This is an app designed to help with learning music by ear. </h4>
+          <h5 className="welcome"> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h5>
           < SongList getChunksBySongName={getChunksBySongName}/>
           </div>
         </div>
@@ -69,7 +69,7 @@ const App = () => {
       return(
         <div className="Container">
           < Navbar navHandler={navHandler} view={view}/>
-          <h4 className="center">Select a song to git goin'!</h4>
+          <h2 className="center">Select a song to git goin'!</h2>
           < SongList getChunksBySongName={getChunksBySongName}/>
         </div>
       )

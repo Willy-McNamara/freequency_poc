@@ -21,7 +21,7 @@ const SongList = ({songChunks, getChunksBySongName}) => {
         let songs = res.data.map((song, index) => {
           return (< Song song={song} key={keyIndex++} getChunksBySongName={getChunksBySongName}/>)
         })
-        setList(songs)
+        setList(songs.reverse())
       })
       .catch((err) => {
         console.log('err with get songs call', err)
@@ -32,7 +32,7 @@ const SongList = ({songChunks, getChunksBySongName}) => {
       .then((res) => {
         // console.log('res.data from server for songs request', res.data)
         let newSong = res.data[list.lenght]
-        setList([...list, < Song song={newSong} key={list.length}/>])
+        setList([< Song song={newSong} key={list.length}/>, ...list])
       })
       .catch((err) => {
         console.log('err with get songs call', err)
@@ -51,7 +51,9 @@ const SongList = ({songChunks, getChunksBySongName}) => {
     return (
       <div className="Container" id="songGallery">
         <img className="galleryImage" src="galleryv3.png"></img>
-        {list}
+        <div className="songGalleryList">
+          {list}
+        </div>
       </div>
     )
   }

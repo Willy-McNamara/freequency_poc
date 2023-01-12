@@ -12,7 +12,7 @@ const LogEntry = ({entry, index}) => {
   let list = `Container logEntry n${(index % 3) + 1}`
 
   return (
-    <div className={list}>
+    <div className={list} id="logEntry">
       <h6>{entry.date}</h6>
       <h6 className="logInfo">You practiced for {entry.duration} minutes</h6>
       <h6 className="logInfo">{entry.notes}</h6>
