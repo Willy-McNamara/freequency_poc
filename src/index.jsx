@@ -46,13 +46,15 @@ const App = () => {
   /* ======== ======== ======== COMPONENTS TO RENDER ======== ======== ======== */
   if (view === 'home') {
     return(
-      <div className="Container">
-        < Navbar navHandler={navHandler} view={view}/>
-        < h1 > Welcome! </h1>
-        <h4> This is an app designed to help with learning music by ear. </h4>
-        <h5> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h5>
-        < SongList getChunksBySongName={getChunksBySongName}/>
-      </div>
+        <div className="welcomeGrid">
+          < Navbar navHandler={navHandler} view={view}/>
+          <div className="Container welcomeContainer">
+          < h1 > Welcome! </h1>
+          <h4> This is an app designed to help with learning music by ear. </h4>
+          <h5> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h5>
+          < SongList getChunksBySongName={getChunksBySongName}/>
+          </div>
+        </div>
     )
   } else if (view === 'addSong') {
     return (
