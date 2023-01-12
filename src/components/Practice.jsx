@@ -5,6 +5,7 @@ import {useState,useEffect,useRef} from "react";
 import axios from "axios";
 import {AccordianBody} from './styled.js';
 import Record from './Record.jsx';
+import {RecordingBoothBtn} from './styled.js'
 
 /*
 ==== Description ====
@@ -72,8 +73,9 @@ const Practice = ({songChunks}) => {
       </audio>
       <div className="Container sessionInfo">
         <h3 id="seshInfo">Session Info</h3>
-        <h5>Log info about your practice session, and optionally record a take!
-          {<button onClick={recClickHandler}>record a take</button>}</h5>
+        <h5>Log info about your practice session, and optionally record a take!</h5>
+        <RecordingBoothBtn recording={!recording} onClick={recClickHandler}>
+        {!recording === true ? "record a take" : "no wait go back"}</RecordingBoothBtn>
           < AccordianBody accordian={recording}>
             < Record songName={songChunks[0].chunkParent} recClickHandler={recClickHandler}></Record>
           </AccordianBody>

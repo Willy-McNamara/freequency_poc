@@ -21,4 +21,10 @@ const ProgressMeter = styled.div`
   transition-timing-function: ease-in;
 `
 
-export {AccordianBody, ProgressMeter}
+const RecordingBoothBtn = styled.button`
+  transition-property: value;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in;
+`
+
+export {AccordianBody, ProgressMeter, RecordingBoothBtn}

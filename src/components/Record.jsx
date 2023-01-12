@@ -78,9 +78,15 @@ const Record = ({songName, recClickHandler}) => {
     })
   }
 
+  let toggleMic = (e) => {
+    e.preventDefault()
+    document.getElementById("recordButton").classList.toggle("recOn")
+  }
+
   return (
     <div id="recordSection" className="Container">
-      <button id="recordButton"> give er' a go </button>
+      <h6> ( tap the mic to stop and start recording! ) </h6>
+      <img id="recordButton" src="microphone.png" onClick={toggleMic}></img>
       <button id="submitRecord" onClick={sendHandler}> send it! </button>
     </div>
   )

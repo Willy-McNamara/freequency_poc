@@ -15,7 +15,7 @@ const ViewRecording = ({song, path}) => {
 
   return (
     <div>
-      <h5>{song}</h5>
+      <h5>{path.split('.')[0]}</h5>
       <audio
         controls
         loop

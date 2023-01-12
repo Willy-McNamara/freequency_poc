@@ -309,6 +309,15 @@ h2 {
   color: #1d1400;
 }
 
+#recordButton {
+  cursor: pointer;
+}
+
+.recOn {
+  border-radius: 50%;
+  border: solid 2px #F26322;
+}
+
 
 
 /* NAVBAR */
