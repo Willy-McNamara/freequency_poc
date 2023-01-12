@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const AccordianBody = styled.div`
   position: relative;
   opacity: ${props => props.accordian === true ? "100%" : "0"};
-  max-height: ${props => props.accordian === true ? "60vh" : "0"};
+  max-height: ${props => props.accordian === true ? "70vh" : "0"};
   overflow: ${props => props.accordian === true ? "auto" : "hidden"};
   display: flex;
   flex-direction: column;

@@ -75,7 +75,7 @@ const PracticeLog = ({songName, updatePracticeLog}) => {
             <div className="scrollableDiv">
               {entries}
             </div>
-            <h4 onClick={handleNestedClick}>View Recordings</h4>
+            <h4 onClick={handleNestedClick} id="viewRecTitle">View Recordings</h4>
             <AccordianBody accordian={nestedAccordian}>
              {nestedAccordian && < RecordingsList songName={songName}/>}
             </AccordianBody>

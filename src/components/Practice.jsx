@@ -59,7 +59,7 @@ const Practice = ({songChunks}) => {
   return (
     <div id="practiceContainer">
       <div className="Container">
-        <h1>{songChunks[0].chunkParent}</h1>
+        <h1>{songChunks[0].chunkParent.split('.')[0]}</h1>
         <div>
           < PracticeLog songName={songChunks[0].chunkParent} updatePracticeLog={updatePracticeLog}/>
         </div>
