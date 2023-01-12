@@ -20,7 +20,6 @@ const Playback = ({mp3, submitChunks}) => {
         className="audioPlayer">
      </audio>
      <div>
-      ChunkForm
       < ChunkForm submitChunks={submitChunks} mp3name={mp3.name}/>
      </div>
     </div>

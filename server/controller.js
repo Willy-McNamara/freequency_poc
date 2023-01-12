@@ -29,15 +29,23 @@ const chunker = (req, res) => {
   Promise.all(dbEntries)
   .then((dbEntries) => {
     // save the song name and date
-     return [dbEntries, new Models.Song({
-      songName: chunks[0].chunkParent,
-      dateAdded: new Date().toString()
-    }).save()]
+    res.send(dbEntries)
+     return Models.Song.find({songName: chunks[0].chunkParent})
   })
-  .then((arr) => {
+  .then((dbRes) => {
+    console.log('logging dbRes from searching for Song already in db :', dbRes)
     // send the new entries back to the client as array of obj
-    console.log('res from db adding song name', arr[1])
-    res.send(arr[0])
+    if (dbRes.length !== 0) {
+      return
+    } else {
+      return (new Models.Song({
+        songName: chunks[0].chunkParent,
+        dateAdded: new Date().toString()
+      }).save())
+    }
+  })
+  .then((dbRes) => {
+    console.log('new song added! here is dbRes', dbRes)
   })
   .catch((err) => {
     console.log('error in promise chain in controller, here is err', err)
@@ -68,7 +76,52 @@ const songsRetriever = (req, res) => {
   })
 }
 
-module.exports = {chunker, chunkRetriever, songsRetriever}
+const notePoster = (req, res) => {
+  new Models.Notes ({
+    songName: req.body.songName,
+    date: new Date().toString(),
+    duration: Number(req.body.duration),
+    notes: req.body.songNotes
+  }).save()
+  .then((dbRes) => {
+    console.log('dbRes from notePoster : ', dbRes)
+    res.send(dbRes)
+    // update total minutes practiced for this song
+    return Models.Song.findOneAndUpdate({songName: req.body.songName}, {$inc: {totalDuration: Number(req.body.duration)}})
+  })
+  .then((dbRes) => {
+    console.log('updated total duration in db, here is dbRes', dbRes)
+  })
+  .catch((err) => {
+    console.log('err in notePoster', err)
+    res.send(err)
+  })
+}
+
+const practiceLogRetriever = (req, res) => {
+  //needs to get
+  Models.Notes.find({songName: req.params.songName})
+  .then((dbRes) => {
+    totalPracticeTime(req,res,dbRes)
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+}
+
+const totalPracticeTime = (req, res, practiceLog) => {
+  // gets total time practiced, adds to practice log, sends to client
+  Models.Song.find({songName: req.params.songName})
+  .then((dbRes) => {
+    let response = {practiceLog: {log: practiceLog, totalPracticeTime: dbRes[0].totalDuration}}
+    res.send(response)
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+}
+
+module.exports = {chunker, chunkRetriever, songsRetriever, notePoster, practiceLogRetriever}
 
 /*
 .then((dbRes) => {

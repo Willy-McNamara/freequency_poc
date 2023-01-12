@@ -13,9 +13,9 @@ const Song = ({song, getChunksBySongName}) => {
   }
 
   return (
-    <div id={song.songName} className="song" onClick={clickHandler}>
-      <h4 id={song.songName} className="songName">{song.songName}</h4>
-      <h6 id={song.songName}>Added on {song.dateAdded}</h6>
+    <div className="song">
+      <h3 id={song.songName} className="songName" onClick={clickHandler}>{song.songName}</h3>
+      <h6>Added on {song.dateAdded}</h6>
     </div>
   )
 }

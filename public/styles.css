@@ -7,6 +7,38 @@
   align-items: center;
   background-color: #fffcf5;
   font-family: 'Lexend', sans-serif;
+  color: #0a0700;
+}
+
+html {
+  background-color: #fffcf5;
+}
+
+button {
+  margin: 0.5vw;
+}
+audio {
+  margin: 1vh;
+}
+
+.galleryImage {
+  margin: 5vh;
+}
+
+.welcomeGrid {
+  display: grid;
+  grid-template-rows: 15vh auto;
+}
+
+.welcomeContainer {
+  grid-row: 2;
+}
+
+textarea {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 100;
+  width: 40vw;
+  min-width: 400px;
 }
 
 .Container {
@@ -17,8 +49,13 @@
   align-items: center;
 }
 
+.chunksContainer {
+  margin: 1vh;
+}
+
 .audioPlayer {
   width: 40vw;
+  min-width: 385px;
   height: 10vh;
 }
 
@@ -32,6 +69,8 @@
 
 .textInput {
   width: 25vw;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 100;
 }
 
 .center {
@@ -47,18 +86,44 @@
 
 #logo {
   width: 20vw;
+  min-width: 175px;
   height: auto;
   position: fixed;
   top: 1vh;
   left: 1vw;
 }
 
-h6, h4, h1 {
+.welcome {
+  min-width: 450px;
+}
+
+h6, h4, h5, h1 {
   margin-block-start: 0;
+  max-width: 40vw;
+  text-align: center;
+}
+h5 {
+  font-weight: 200;
+  margin-bottom: 0.5vh;
+  text-align: center;
+}
+h3, h6 {
+  margin: 1vh;
+}
+h6 {
+  font-weight: 100;
+  /* font-style: italic; */
+}
+h2 {
+  color: #eb8e89;
 }
 
 .formElement {
   align-self: flex-start;
+}
+
+#newmp3 {
+  padding-left: 60px;
 }
 
 #songGallery {
@@ -77,19 +142,127 @@ h6, h4, h1 {
 
 .songName:hover {
   color: #eb8e89;
+  cursor: pointer;
 }
+
+.otherChunk {
+  cursor: pointer;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 5vh;
+}
+
+/* SESSION INFO STUFF */
+
+.sessionInfo {
+  margin: 2vh;
+}
+
+#sessionNotes {
+  margin: 1vh;
+}
+
+.textInput {
+  margin: 1vh;
+  width: 223px;
+}
+
+.floatContainer {
+  position: absolute;
+  height: 50px !important;
+}
+.floatingInstructions {
+  position: relative;
+  left: -114px;
+  top: 13px;
+  transform: rotate(25deg);
+}
+
+.accordianTitle {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  margin-left: -50px;
+  color: #EB89E6;
+  cursor: pointer;
+}
+
+.accordianContent {
+  margin-top: 25px;
+}
+.accordianContainer {
+  min-height: 10vh;
+  justify-content: start;
+}
+.arrowContainer {
+  position: relative;
+  left: -55px;
+  transform: rotate(25deg);
+}
+
+.arrow {
+  position: absolute;
+  width: 40px;
+}
+
+
+/* ====== ======= ====== PRACTICE LOG ====== ======= ======*/
+
+#practiceGrid {
+  display: grid;
+  grid-template-rows: 70vh auto;
+}
+
+#practiceContainer {
+  display: grid;
+  grid-row-start: 1;
+}
+
+.logEntry {
+  margin: 1vh;
+  padding: 0.5vh;
+  align-items: flex-start;
+  border-radius: 3px;
+  width: 40vw;
+}
+
+.logInfo {
+  font-weight: 200;
+  margin: 0.5vh;
+}
+
+.n1 {
+  background-color: #f8d8f7;
+}
+
+.n2 {
+  background-color: #fcddcf;
+}
+
+.n3 {
+  background-color: #f7d1cf;
+}
+
+#chunkTitle {
+  color: #eb8e89;
+}
+
+#seshInfo {
+  color: 	#f59164;
+}
+
 
 /* NAVBAR */
 
-/* Add a black background color to the top navigation */
+/* Add a black background color to the top navigation #333 */
 .nav {
-  background-color: #333;
+  background-color: #1d1400;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 40%;
-  left: 1vw;
+  left: 15px;
   border-radius: 3px;
 }
 
@@ -101,12 +274,14 @@ h6, h4, h1 {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  cursor: pointer;
 }
 
 /* Change the color of links on hover */
 .nav a:hover {
   background-color: #eb89e6;
-  color: black;
+  color: #312200;
+  cursor: pointer;
 }
 
 /* Add a color to the active/current link */

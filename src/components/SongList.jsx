@@ -50,7 +50,7 @@ const SongList = ({songChunks, getChunksBySongName}) => {
   } else {
     return (
       <div className="Container" id="songGallery">
-        <img src="galleryv3.png"></img>
+        <img className="galleryImage" src="galleryv3.png"></img>
         {list}
       </div>
     )

@@ -24,6 +24,7 @@ const Upload = ({getChunksBySongName}) => {
 
   // === Send chunk information to server, recieve back dbRes with paths for chunks === //
   let submitChunks = (chunkData) => {
+    console.log('here is chunkData in submitChunks :', chunkData)
     var formData = new FormData();
     mp3.description = JSON.stringify(chunkData)
     formData.append("mp3", mp3, mp3.name);
@@ -44,8 +45,7 @@ const Upload = ({getChunksBySongName}) => {
     return(
       <div id="uploadContainer" className="Container" >
         <label htmlFor="upload" className="center"></label>
-        <input id="new.mp3" className="center" type="file" name="mp3" accept=".mp3" onChange={handleChange}/>
-        <input type="submit" value="chunk time" />
+        <input id="newmp3" className="center" type="file" name="mp3" accept=".mp3" onChange={handleChange}/>
       </div>
     )
   } else {

@@ -50,7 +50,7 @@ const App = () => {
         < Navbar navHandler={navHandler} view={view}/>
         < h1 > Welcome! </h1>
         <h4> This is an app designed to help with learning music by ear. </h4>
-        <h6> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h6>
+        <h5> View "chunks" of songs from your gallery by clicking the titles below, or visit 'Add Song' to chunk your own! </h5>
         < SongList getChunksBySongName={getChunksBySongName}/>
       </div>
     )
@@ -73,7 +73,7 @@ const App = () => {
       )
     } else {
         return (
-          <div>
+          <div id="practiceGrid">
             < Navbar navHandler={navHandler} view={view}/>
             < Practice songChunks={songChunks}/>
           </div>

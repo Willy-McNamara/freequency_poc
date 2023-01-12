@@ -39,6 +39,11 @@ app.post('/upload/chunkInfo', (req, res) => {
   // send to a controller which will chop up and save new mini mp3s, and add info to db
   controller.chunker(req, res)
 })
+// POST SESSION NOTES
+app.post('/notes', (req,res) => {
+  console.log('notes route working, here is req.body :', req.body)
+  controller.notePoster(req,res)
+})
 
 // GET ALL SONGS
 app.get('/songs', (req, res) => {
@@ -52,6 +57,11 @@ app.get('/chunks/:songName', (req, res) => {
 // GET MP3 FOR SPECIFIC CHUNK
 app.get('/chunk/:chunkName', (req, res) => {
   res.sendFile(__dirname + `/uploads/chunks/${req.params.chunkName}`)
+})
+// GET PRACTICE LOG
+app.get('/practiceLog/:songName', (req, res) => {
+  console.log('logging req.params in get practice log', req.params)
+  controller.practiceLogRetriever(req, res)
 })
 
 /* ======== ======== ======== SET TO LISTEN ======== ======== ======== */

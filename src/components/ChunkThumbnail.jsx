@@ -13,10 +13,9 @@ const ChunkThumbnail = ({chunk, chunkSelectHandler, i}) => {
     chunkSelectHandler(Number(e.target.id))
   }
 
-  console.log('logging chunk in ChunkThumbnail.jsx', chunk)
   // using the songChunks array of objects, render 'Chunks'
   return (
-    <div onClick={handleClick} id={"" + i}>
+    <div onClick={handleClick} id={"" + i} className="otherChunk">
       <img src="notes.png"></img>
       {chunk.chunkName}
     </div>
@@ -25,3 +24,7 @@ const ChunkThumbnail = ({chunk, chunkSelectHandler, i}) => {
 
 
 export default ChunkThumbnail
+
+// This is first A section from JC's opening solo over the head. This song moves so fast, gotta take it bit by bit! Hopefully this demonstrates why I built this app :) Solo1.A1
+
+//The intro to John Coltrane's "Giant Steps", titled for the leaps taken in the changes around the circle of 5ths.
