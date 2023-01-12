@@ -3,6 +3,8 @@ import ChunkThumbnail from "./ChunkThumbnail.jsx"
 import PracticeLog from "./PracticeLog.jsx"
 import {useState,useEffect,useRef} from "react";
 import axios from "axios";
+import {AccordianBody} from './styled.js';
+import Record from './Record.jsx';
 
 /*
 ==== Description ====
@@ -13,6 +15,7 @@ these chunks will grab the audio being hosted
 const Practice = ({songChunks}) => {
   let [index, setIndex] = useState(0)
   let [updatePracticeLog, setUpdatePracticeLog] = useState(0)
+  let [recording, setRecording] = useState(false)
   let sessionInfo = useRef('')
   let duration = useRef(0)
 
@@ -46,6 +49,11 @@ const Practice = ({songChunks}) => {
     document.getElementById("sessionDuration").value = ""
   }
 
+  let recClickHandler = (e) => {
+    if (e) {e.preventDefault()}
+    setRecording(!recording)
+  }
+
   // using the songChunks array of objects, render 'Chunks'
   return (
     <div id="practiceContainer">
@@ -64,7 +72,11 @@ const Practice = ({songChunks}) => {
       </audio>
       <div className="Container sessionInfo">
         <h3 id="seshInfo">Session Info</h3>
-        <h5>Log info about your practice session, and optionally record a take!</h5>
+        <h5>Log info about your practice session, and optionally record a take!
+          {<button onClick={recClickHandler}>record a take</button>}</h5>
+          < AccordianBody accordian={recording}>
+            < Record songName={songChunks[0].chunkParent} recClickHandler={recClickHandler}></Record>
+          </AccordianBody>
           <textarea id="sessionNotes" name="sessionNotes" rows="4" cols="50" placeholder="Here is how my practice session went..." ref={sessionInfo}></textarea>
           <input id="sessionDuration" className="textInput" type="text" ref={duration} placeholder="How many minutes did you practice?"/>
           <button onClick={submitSessionHandler}> submit session </button>
@@ -82,3 +94,16 @@ const Practice = ({songChunks}) => {
 
 
 export default Practice
+
+/*
+IDEA FOR RECORDING
+
+'record a take'!
+is an href , or there is a button right next to it, which triggers a modal
+
+model background color is grey with very low opacity
+
+in the middle there is a microphone icon you can click to begin recording
+
+when done recording, hit a submit button which closes the modal and attaches it to the dom.
+*/

@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname)
   },
   destination: function (req, file, cb) {
-    cb(null, './uploads/')
+    cb(null, './recordings/')
   },
 })
 const upload = multer({ storage })
@@ -33,11 +33,22 @@ app.use(express.static(path.join('../public')));
 app.post('/upload/mp3', upload.single('mp3'), (req, res) => {
   res.send('file recieved')
 })
+// POST RECORDING
+app.post('/recording/:songName', upload.single('audio_data'), (req, res) => {
+  console.log('post recording, here is req.params', req.params)
+  res.send('file recieved')
+})
 // POST CHUNK INFO
 app.post('/upload/chunkInfo', (req, res) => {
   console.log('here is req.body:', req.body)
   // send to a controller which will chop up and save new mini mp3s, and add info to db
   controller.chunker(req, res)
+})
+// POST REC INFO
+app.post('/addRecToDB', (req, res) => {
+  console.log('here is req.body:', req.body)
+  // send to a controller which will chop up and save new mini mp3s, and add info to db
+  controller.recAdder(req, res)
 })
 // POST SESSION NOTES
 app.post('/notes', (req,res) => {
@@ -62,6 +73,16 @@ app.get('/chunk/:chunkName', (req, res) => {
 app.get('/practiceLog/:songName', (req, res) => {
   console.log('logging req.params in get practice log', req.params)
   controller.practiceLogRetriever(req, res)
+})
+// GET RECORDING BY SONG NAME
+app.get('/recordingsBySongName/:songName', (req,res)=> {
+  console.log('getrecordingsbysongname triggered!')
+  controller.getRecordingsBySongName(req, res)
+})
+// GET RECORDING
+app.get('/playRecording/:title', (req,res)=> {
+  console.log('playRecording triggered!')
+  res.sendFile(__dirname + `/recordings/${req.params.title}`)
 })
 
 /* ======== ======== ======== SET TO LISTEN ======== ======== ======== */

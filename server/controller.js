@@ -121,7 +121,34 @@ const totalPracticeTime = (req, res, practiceLog) => {
   })
 }
 
-module.exports = {chunker, chunkRetriever, songsRetriever, notePoster, practiceLogRetriever}
+const recAdder = (req, res) => {
+  // gets total time practiced, adds to practice log, sends to client
+  new Models.Recording({
+    songName: req.body.songName,
+    title: req.body.title
+  }).save()
+  .then((dbRes) => {
+    console.log('successful post recording data, here is dbRes: ', dbRes)
+    res.send('success!')
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+}
+
+const getRecordingsBySongName = (req, res) => {
+  // gets total time practiced, adds to practice log, sends to client
+  console.log('logging req params in getRecordingsBySongName',req.params)
+  Models.Recording.find({songName: req.params.songName})
+  .then((dbRes) => {
+    res.send(dbRes)
+  })
+  .catch((err) => {
+    res.send(err)
+  })
+}
+
+module.exports = {chunker, chunkRetriever, songsRetriever, notePoster, practiceLogRetriever, recAdder, getRecordingsBySongName}
 
 /*
 .then((dbRes) => {

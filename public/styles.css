@@ -216,6 +216,16 @@ h2 {
   transform: rotate(25deg);
 }
 
+.scrollableDiv {
+  max-height: 35vh;
+  overflow: auto;
+  margin-top: 0.5vh;
+}
+
+.scrollableDiv::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
 .accordianTitle {
   position: absolute;
   left: 50%;
@@ -225,9 +235,10 @@ h2 {
   cursor: pointer;
 }
 
-.accordianContent {
+/* .accordianContent {
   margin-top: 25px;
-}
+  text-align: center;
+} */
 .accordianContainer {
   min-height: 10vh;
   justify-content: start;
@@ -296,16 +307,6 @@ h2 {
 
 #otherChunks {
   color: #1d1400;
-}
-
-.scrollableDiv {
-  max-height: 35vh;
-  overflow: auto;
-  margin-top: 0.5vh;
-}
-
-.scrollableDiv::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
 }
 
 
