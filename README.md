@@ -16,3 +16,5 @@ I am currently scoping v1, and excited to bring it to life!
 # v0
 
 Below is a demo of the features I managed to standup in 3 days (mp3 and chunk upload, persistant practice log, user record). 
+
+![](https://github.com/Willy-McNamara/Freequency/blob/main/Screen_Recording_2023-01-23_at_4_56_55_PM_AdobeExpress.gif)
