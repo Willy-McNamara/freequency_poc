@@ -2,40 +2,12 @@
 
 Freequency : An app which helps a user learn a song by ear and repetition. The user uploads an mp3 which they can then chunk into learnable portions. The user then has access to simple playback features for these chunks to help break down the tedious nature of learning music by ear.
 
-Potential features in future state:
-- an integrated kanban board which organizes the users practice by the ‘chunk’
-- Ability for the user to add notes and recordings to their chunks
-- Generate a personalized visual token to commemorate a particularly tough section!
-- Persisted data for each user
-- Social aspect :
-    - ‘Post’ meaningful chunks or sessions to your practice history
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-
-v0
-- Webpage allows user to upload an mp3 via form
-  - form collects
-    - basic info on the song
-    - the # of chunks to split the song into
-    - the seconds mark indicating the end of each chunk
-- form
-- User can then play these chunks back by clicking
-- Building out Chunk objects
-  - Allow user to enter information about the chunk
-    - Title
-    - Notes
-
-v1
-- Addition of playback features
-  - Loop
-  - Speed manipulation
-- Organize chunks into kanban board
-- User uses sliders to chop up the mp3 into ‘chunks’
-
-v3
-- User can record a live take of this chunk to and save it on the chunk object
-- User can generate a piece of art to commemorate chunk completion!
-
-v4
-- Basic auth through google
-- Integrate database such that the user and their chunks are saved
 
