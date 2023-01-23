@@ -1,6 +1,9 @@
 # Freequency
 
-Freequency : An app which helps a user learn a song by ear and repetition. The user uploads an mp3 which they can then chunk into learnable portions. The user then has access to simple playback features for these chunks to help break down the tedious nature of learning music by ear.
+This project began as a 3 day bootcamp sprint to create my own concept and app from scratch. To align with an annual goal of mine, I decided to build an app which helps the user learn music by ear and log their practice sessions. The user uploads an mp3 which they can then chunk into learnable portions. The user then has access to simple playback features for these chunks to help break down the tedious nature of learning music by ear.
+
+Pictured and described below is v0- what I was able to accomplish in 3 days. 
+I am currently scoping v1, and excited to bring it to life! 
 
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -10,4 +13,6 @@ Freequency : An app which helps a user learn a song by ear and repetition. The u
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+# v0
 
+Below is a demo of the features I managed to standup in 3 days (mp3 and chunk upload, persistant practice log, user record). 
