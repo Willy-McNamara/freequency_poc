@@ -18,4 +18,4 @@ I am currently scoping v1, and excited to bring it to life!
 Below is a demo of the features I managed to standup in 3 days (mp3 and chunk upload, persistant practice log, user record). 
 
 
-<img src="https://recordit.co/YeGartMC46" width="700"/>
+<img src="http://g.recordit.co/YeGartMC46.gif" width="700"/>
